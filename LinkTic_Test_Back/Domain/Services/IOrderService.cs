@@ -1,6 +1,13 @@
-﻿namespace LinkTic_Test_Back.Domain.Services
+﻿using LinkTic_Test_Back.Domain.Entities;
+
+namespace LinkTic_Test_Back.Domain.Services
 {
-    public class IOrderService
+    public interface IOrderService
     {
+        Task<IEnumerable<Order>> GetAllOrdersAsync();
+        Task<Order> GetOrderByIdAsync(int id);
+        Task CreateOrderAsync(Order order);
+        Task UpdateOrderAsync(Order order);
+        Task DeleteOrderAsync(int id);
     }
 }

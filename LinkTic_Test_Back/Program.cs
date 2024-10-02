@@ -14,17 +14,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-// Agrega las dependencias
+// Add dependencies
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 
-// Agrega el contexto de la base de datos
+// Add context of db
 builder.Services.AddDbContext<ECommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Agrega los controladores
+// Add controllers
 builder.Services.AddControllers();
 
 
