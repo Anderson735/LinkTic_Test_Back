@@ -51,5 +51,12 @@ namespace LinkTic_Test_Back.Presentation.Controllers
             await _productService.DeleteProductAsync(id);
             return NoContent();
         }
+
+        [HttpGet("error")]
+        public IActionResult GetError()
+        {
+            // Forzar una excepción para probar el middleware
+            throw new Exception("Esto es un error de prueba");
+        }
     }
 }

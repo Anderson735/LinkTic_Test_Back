@@ -1,6 +1,7 @@
 using LinkTic_Test_Back.Application.Services;
 using LinkTic_Test_Back.Domain.Interfaces;
 using LinkTic_Test_Back.Domain.Services;
+using LinkTic_Test_Back.Infrastructure.Middleware;
 using LinkTic_Test_Back.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,6 +32,9 @@ builder.Services.AddControllers();
 
 
 var app = builder.Build();
+
+// Add ExceptionMiddleware
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
