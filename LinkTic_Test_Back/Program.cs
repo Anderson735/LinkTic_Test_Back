@@ -30,6 +30,14 @@ builder.Services.AddDbContext<ECommerceContext>(options =>
 // Add controllers
 builder.Services.AddControllers();
 
+// Add cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NewPolitics", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -48,5 +56,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("NewPolitics");
 
 app.Run();
