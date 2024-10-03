@@ -12,6 +12,7 @@ namespace LinkTic_Test_Back.Infrastructure.Persistence
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+      
 
     }
 }
