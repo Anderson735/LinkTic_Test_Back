@@ -1,4 +1,7 @@
+using LinkTic_Test_Back.Application.Services;
 using LinkTic_Test_Back.Domain.Entities;
+using LinkTic_Test_Back.Domain.Interfaces;
+using LinkTic_Test_Back.Domain.Services;
 using LinkTic_Test_Back.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -15,6 +18,14 @@ builder.Services.AddSwaggerGen();
 // Add context of db
 builder.Services.AddDbContext<ECommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add repositories
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>(); 
+
+// Add services
+builder.Services.AddScoped<IOrderService, OrderService>(); 
+builder.Services.AddScoped<IProductService, ProductService>(); 
 
 // Add CORS
 builder.Services.AddCors(options =>
